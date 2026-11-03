@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lunaria — Keuangan freelance dan UKM yang akhirnya rapi</title>
+  <meta name="description" content="Lunaria menyatukan pemasukan, pengeluaran, dan arus kas usaha kecil dalam satu dasbor. Catat transaksi dalam hitungan detik, lihat sisa uang bersih, dan siapkan pajak tanpa panik. Mulai gratis.">
+  <meta name="theme-color" content="#07080e">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://lunaria.id/">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:site_name" content="Lunaria">
+  <meta property="og:title" content="Lunaria — Keuangan freelance dan UKM yang akhirnya rapi">
+  <meta property="og:description" content="Satu dasbor untuk pemasukan, pengeluaran, dan arus kas usaha kecil. Catat dalam hitungan detik, pahami uang bersih Anda setiap bulan.">
+  <meta property="og:url" content="https://lunaria.id/">
+  <meta property="og:image" content="https://lunaria.id/og-cover.png">
+  <meta property="og:image:alt" content="Pratinjau dasbor Lunaria dengan grafik arus kas bulanan">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lunaria — Keuangan freelance dan UKM yang rapi">
+  <meta name="twitter:description" content="Satu dasbor untuk pemasukan, pengeluaran, dan arus kas usaha kecil.">
+  <meta name="twitter:image" content="https://lunaria.id/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%238a7bff'/%3E%3Cpath d='M20.5 8.5a8 8 0 1 0 0 15 9 9 0 0 1 0-15z' fill='%230a0715'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Lunaria",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web, iOS, Android",
+    "description": "Platform manajemen keuangan untuk freelance dan UKM: pemasukan, pengeluaran, arus kas, dan kesiapan pajak dalam satu dasbor.",
+    "offers": [
+      { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "IDR" },
+      { "@type": "Offer", "name": "Pro", "price": "79000", "priceCurrency": "IDR" },
+      { "@type": "Offer", "name": "Business", "price": "249000", "priceCurrency": "IDR" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="wrap">
+      <nav class="nav" aria-label="Navigasi utama">
+        <a class="brand" href="index.html" aria-label="Lunaria, beranda">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3.5a8.5 8.5 0 1 0 0 17 9.5 9.5 0 0 1 0-17z"/></svg>
+          </span>
+          Lunaria
+        </a>
+
+        <ul class="nav__links">
+          <li><a href="#fitur">Fitur</a></li>
+          <li><a href="#cerita">Cerita pengguna</a></li>
+          <li><a href="#harga">Harga</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+
+        <div class="nav__actions">
+          <a class="btn btn--ghost btn--sm" href="dashboard.html">Masuk</a>
+          <a class="btn btn--primary btn--sm" href="#harga">Mulai gratis</a>
+          <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Buka menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </nav>
+
+      <div class="mobile-menu" id="mobileMenu" hidden>
+        <a href="#fitur">Fitur</a>
+        <a href="#cerita">Cerita pengguna</a>
+        <a href="#harga">Harga</a>
+        <a href="#faq">FAQ</a>
+        <a href="dashboard.html">Buka dasbor demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <span class="hero__glow hero__glow--a" aria-hidden="true"></span>
+      <span class="hero__glow hero__glow--b" aria-hidden="true"></span>
+
+      <div class="wrap hero__grid">
+        <div>
+          <p class="hero__badge">
+            <b>Baru</b>
+            Rekap pajak otomatis untuk PPh final UMKM
+          </p>
+
+          <h1 id="heroTitle">
+            Uang usaha Anda<br>
+            akhirnya <span class="grad-text">terbaca jelas.</span>
+          </h1>
+
+          <p class="hero__lede">
+            Lunaria mencatat pemasukan dan pengeluaran dari rekening, e-wallet, dan invoice
+            dalam satu tempat — lalu menunjukkan sisa uang bersih Anda, bukan sekadar total masuk.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="dashboard.html">
+              Mulai gratis
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="dashboard.html">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/></svg>
+              Lihat dasbor demo
+            </a>
+          </div>
+
+          <p class="hero__note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Gratis selamanya untuk 1 usaha · tanpa kartu kredit
+          </p>
+        </div>
+
+        <!-- Hero visual: mini dashboard -->
+        <div class="hero__visual">
+          <div class="app-frame" role="img" aria-label="Pratinjau dasbor Lunaria: saldo bersih Rp 48,6 juta, pemasukan bulan ini Rp 21,4 juta, dan grafik arus kas enam bulan terakhir">
+            <div class="app-frame__bar" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <p>lunaria.id/dasbor</p>
+            </div>
+
+            <div class="app-frame__body" aria-hidden="true">
+              <div class="mini-stats">
+                <div class="mini-stat">
+                  <p class="mini-stat__label">Saldo bersih</p>
+                  <p class="mini-stat__value tabular">Rp 48,6 jt</p>
+                  <p class="mini-stat__delta">+12,4% dari Juni</p>
+                </div>
+                <div class="mini-stat">
+                  <p class="mini-stat__label">Pemasukan</p>
+                  <p class="mini-stat__value tabular">Rp 21,4 jt</p>
+                  <p class="mini-stat__delta">+8 invoice lunas</p>
+                </div>
+                <div class="mini-stat">
+                  <p class="mini-stat__label">Pengeluaran</p>
+                  <p class="mini-stat__value tabular">Rp 9,1 jt</p>
+                  <p class="mini-stat__delta is-down">+3,2% dari Juni</p>
+                </div>
+              </div>
+
+              <div class="mini-chart">
+                <div class="mini-chart__head">
+                  <p>Arus kas 6 bulan</p>
+                  <span>Feb — Jul 2026</span>
+                </div>
+                <svg viewBox="0 0 320 110" preserveAspectRatio="none" focusable="false">
+                  <defs>
+                    <linearGradient id="heroLine" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#8a7bff"/>
+                      <stop offset="1" stop-color="#4c8dff"/>
+                    </linearGradient>
+                    <linearGradient id="heroArea" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#8a7bff" stop-opacity="0.28"/>
+                      <stop offset="1" stop-color="#8a7bff" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path class="area" d="M4 78 L56 62 L108 70 L160 44 L212 50 L264 26 L316 34 L316 108 L4 108 Z"/>
+                  <path class="line" d="M4 78 L56 62 L108 70 L160 44 L212 50 L264 26 L316 34"/>
+                  <circle class="dot" cx="264" cy="26" r="4"/>
+                  <circle class="dot" cx="316" cy="34" r="4"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="float-card" aria-hidden="true">
+            <span class="float-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </span>
+            <p>
+              Invoice #0192 lunas
+              <strong class="tabular">+Rp 4.250.000</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARTNERS ============ -->
+    <section class="partners" aria-label="Dipercaya oleh">
+      <div class="wrap">
+        <p>Dipercaya 12.000+ freelancer, studio, dan toko kecil di Indonesia</p>
+        <ul>
+          <li>Kirana Studio</li>
+          <li>warungkopi.id</li>
+          <li>NUSA</li>
+          <li>Rempah Co.</li>
+          <li>TIGA KAKI</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ STATEMENT ============ -->
+    <section class="section--tight statement" aria-labelledby="statementTitle">
+      <div class="wrap statement__grid reveal">
+        <h2 id="statementTitle">
+          Masalahnya bukan Anda tidak bisa menghitung. Masalahnya uang usaha
+          <em>tercampur</em> di lima tempat berbeda.
+        </h2>
+        <ul class="statement__list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Rekening pribadi dan usaha tercampur, jadi laba cuma terasa, tidak pernah terbukti.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Catatan di spreadsheet rusak begitu ada satu transaksi terlewat.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Pajak baru diurus di menit terakhir, dan angkanya selalu mengejutkan.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" id="fitur" aria-labelledby="fiturTitle">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <h2 id="fiturTitle">Cukup enam hal untuk membuat pembukuan Anda berhenti jadi beban.</h2>
+          <p>Setiap fitur dibuat untuk dipakai di sela pekerjaan — bukan untuk menambah pekerjaan baru.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+            <h3>Catat dalam 5 detik</h3>
+            <p>Ketik nominal dan keterangan, sisanya Lunaria yang menebak kategori, akun, dan apakah itu pemasukan atau pengeluaran.</p>
+            <p class="feature__meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12z"/></svg>
+              Pintasan papan tik: N
+            </p>
+          </article>
+
+          <article class="feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg>
+            </span>
+            <h3>Arus kas, bukan sekadar total</h3>
+            <p>Lihat pola bulanan yang memisahkan uang masuk, uang keluar, dan laba bersih — supaya bulan ramai tidak menutupi bulan sepi.</p>
+          </article>
+
+          <article class="feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v12H4z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M4 12h16"/></svg>
+            </span>
+            <h3>Invoice yang menagih sendiri</h3>
+            <p>Kirim invoice bermerek Anda, pantau kapan dibuka, dan terima pengingat otomatis untuk tagihan yang lewat jatuh tempo.</p>
+          </article>
+
+          <article class="feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v6c0 4.5-3.4 7.4-8 8-4.6-.6-8-3.5-8-8V7z"/><path d="M9 12l2 2 4-4"/></svg>
+            </span>
+            <h3>Rekap pajak PPh final</h3>
+            <p>Setiap transaksi langsung dihitung ke estimasi PPh final 0,5%. Unduh rekap siap lapor ke DJP Online kapan pun.</p>
+            <p class="feature__meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
+              Hemat 3 jam per bulan
+            </p>
+          </article>
+
+          <article class="feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>
+            </span>
+            <h3>Proyek dan klien terpisah</h3>
+            <p>Tandai tiap transaksi ke proyek atau klien, lalu ketahui proyek mana yang benar-benar menguntungkan dan mana yang menguras waktu.</p>
+          </article>
+
+          <article class="feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M17 7.5c0-2-2.2-3-5-3s-5 1-5 3 2.2 2.7 5 3.2 5 1.2 5 3.3-2.2 3-5 3-5-1-5-3"/></svg>
+            </span>
+            <h3>Dua mata uang, satu angka</h3>
+            <p>Terima pembayaran dalam USD atau SGD, dan Lunaria mengonversinya ke rupiah dengan kurs hari transaksi — bukan kurs hari ini.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROOF ============ -->
+    <section class="section--tight" aria-label="Hasil pengguna">
+      <div class="wrap">
+        <div class="proof reveal">
+          <div>
+            <b data-count="12.4" data-suffix=" rb">12,4 rb</b>
+            <span>usaha aktif mencatat lewat Lunaria setiap bulan</span>
+          </div>
+          <div>
+            <b>Rp 1,8 T</b>
+            <span>arus kas tercatat sejak Lunaria dibuka pada 2023</span>
+          </div>
+          <div>
+            <b data-count="3" data-suffix=" jam">3 jam</b>
+            <span>rata-rata waktu yang kembali ke pemilik usaha tiap bulan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="section" id="cerita" aria-labelledby="ceritaTitle">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <h2 id="ceritaTitle">Tiga orang, tiga cara berbeda memakai Lunaria.</h2>
+          <p>Cerita di bawah dikutip apa adanya dari pengguna yang setuju namanya ditampilkan.</p>
+        </div>
+
+        <div class="quotes">
+          <figure class="quote reveal">
+            <blockquote>
+              “Saya kira laba saya 15 juta sebulan. Setelah semua biaya iklan dan honor editor masuk ke Lunaria, ternyata <strong>8,2 juta</strong>. Pahit, tapi itu angka yang menyelamatkan bisnis saya.”
+            </blockquote>
+            <footer>
+              <span class="avatar" aria-hidden="true">AR</span>
+              <cite>Anindya Rahma <span>Pemilik Kirana Studio, Bandung</span></cite>
+            </footer>
+          </figure>
+
+          <figure class="quote reveal">
+            <blockquote>
+              “Dulu saya habis dua malam tiap bulan menyalin mutasi rekening ke spreadsheet. Sekarang saya buka Lunaria di HP sambil menunggu klien, dan <strong>rekap pajaknya sudah jadi</strong>.”
+            </blockquote>
+            <footer>
+              <span class="avatar avatar--b" aria-hidden="true">BS</span>
+              <cite>Bagas Santika <span>Freelance developer, Yogyakarta</span></cite>
+            </footer>
+          </figure>
+
+          <figure class="quote reveal">
+            <blockquote>
+              “Kami punya tiga cabang kedai rempah. Fitur proyek membuat saya tahu cabang mana yang untung — dan ternyata <strong>satu cabang selama ini menutupi kerugian</strong>.”
+            </blockquote>
+            <footer>
+              <span class="avatar avatar--c" aria-hidden="true">MW</span>
+              <cite>Maya Wulandari <span>Pendiri Rempah Co., Surabaya</span></cite>
+            </footer>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section" id="harga" aria-labelledby="hargaTitle">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <h2 id="hargaTitle">Harga yang tidak perlu dinegosiasikan tiap tahun.</h2>
+          <p>Semua paket termasuk pencatatan tanpa batas, ekspor CSV, dan dukungan Bahasa Indonesia.</p>
+        </div>
+
+        <div class="pricing">
+          <article class="plan reveal">
+            <h3>Free</h3>
+            <p class="plan__price"><b>Rp 0</b><span>/ selamanya</span></p>
+            <p class="plan__desc">Untuk yang baru mulai memisahkan uang pribadi dan usaha.</p>
+            <a class="btn btn--ghost btn--block" href="dashboard.html">Mulai gratis</a>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 1 usaha, 2 akun bank</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 100 transaksi per bulan</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Grafik arus kas 3 bulan</li>
+              <li class="is-off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg> Invoice dan pengingat otomatis</li>
+              <li class="is-off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg> Rekap pajak PPh final</li>
+            </ul>
+          </article>
+
+          <article class="plan plan--featured reveal">
+            <span class="plan__tag">Paling dipilih</span>
+            <h3>Pro</h3>
+            <p class="plan__price"><b>Rp 79 rb</b><span>/ bulan</span></p>
+            <p class="plan__desc">Untuk freelancer dan studio yang menagih klien setiap minggu.</p>
+            <a class="btn btn--primary btn--block" href="dashboard.html">Coba Pro 14 hari</a>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 3 usaha, akun tanpa batas</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Transaksi tanpa batas</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Invoice bermerek + pengingat otomatis</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Rekap pajak PPh final, ekspor siap lapor</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Proyek, klien, dan dua mata uang</li>
+            </ul>
+          </article>
+
+          <article class="plan reveal">
+            <h3>Business</h3>
+            <p class="plan__price"><b>Rp 249 rb</b><span>/ bulan</span></p>
+            <p class="plan__desc">Untuk tim kecil dan usaha dengan beberapa cabang.</p>
+            <a class="btn btn--ghost btn--block" href="dashboard.html">Hubungi kami</a>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Usaha dan cabang tanpa batas</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 5 pengguna dengan peran berbeda</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Laporan laba rugi per cabang</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Persetujuan pengeluaran</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Pendamping akuntan lewat WhatsApp</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section--tight" id="faq" aria-labelledby="faqTitle">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <h2 id="faqTitle">Pertanyaan yang paling sering masuk.</h2>
+        </div>
+
+        <div class="faq" id="faqList">
+          <div class="faq__item reveal">
+            <h3>
+              <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq1">
+                Apakah data keuangan saya aman?
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq1" role="region">
+              <p>Data dienkripsi saat dikirim (TLS 1.3) dan saat disimpan (AES-256). Kami tidak pernah meminta kredensial perbankan Anda: transaksi masuk lewat impor mutasi CSV atau unggahan bukti bayar. Anda dapat menghapus seluruh data kapan saja dari menu Pengaturan.</p>
+            </div>
+          </div>
+
+          <div class="faq__item reveal">
+            <h3>
+              <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq2">
+                Apakah bisa dipakai dari HP?
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq2" role="region">
+              <p>Bisa. Lunaria berjalan di peramban ponsel tanpa aplikasi tambahan, dan pencatatan transaksi dirancang untuk satu tangan: satu formulir, tiga ketukan. Versi aplikasi Android dan iOS sedang dalam uji tertutup.</p>
+            </div>
+          </div>
+
+          <div class="faq__item reveal">
+            <h3>
+              <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq3">
+                Bagaimana cara ekspor untuk lapor pajak?
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq3" role="region">
+              <p>Di menu Pajak, pilih periode lalu tekan Ekspor. Anda mendapat dua berkas: rekap PPh final 0,5% sesuai PP 55/2022, dan rincian transaksi dalam CSV. Angkanya sudah dipisahkan per bulan sehingga bisa langsung disalin ke formulir DJP Online.</p>
+            </div>
+          </div>
+
+          <div class="faq__item reveal">
+            <h3>
+              <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq4">
+                Bisakah saya berhenti kapan saja?
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq4" role="region">
+              <p>Ya, tanpa penalti dan tanpa telepon dari tim penjualan. Paket berbayar tetap aktif sampai akhir periode yang sudah dibayar, lalu turun otomatis ke Free. Semua transaksi Anda tetap bisa diunduh dalam CSV.</p>
+            </div>
+          </div>
+
+          <div class="faq__item reveal">
+            <h3>
+              <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq5">
+                Apakah Lunaria terhubung langsung ke bank?
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq5" role="region">
+              <p>Saat ini kami mendukung impor mutasi CSV dari BCA, Mandiri, BRI, BNI, dan Jago, serta sinkronisasi baca-saja dengan beberapa e-wallet. Koneksi langsung ke lebih banyak bank sedang dikerjakan bertahap.</p>
+            </div>
+          </div>
+
+          <div class="faq__item reveal">
+            <h3>
+              <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq6">
+                Saya tidak paham akuntansi. Apakah tetap bisa?
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq6" role="region">
+              <p>Justru Lunaria dibuat untuk Anda. Tidak ada istilah debit-kredit di antarmuka. Anda cukup menjawab tiga hal: uang masuk atau keluar, berapa, dan untuk apa. Sisanya kami terjemahkan ke laporan yang bisa dibaca akuntan Anda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="section--tight" aria-labelledby="ctaTitle">
+      <div class="wrap">
+        <div class="final-cta reveal">
+          <h2 id="ctaTitle">Bulan depan, Anda bisa tahu persis ke mana uang Anda pergi.</h2>
+          <p>Mulai dari satu transaksi hari ini. Tidak perlu kartu kredit, tidak perlu memindahkan apa pun.</p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="dashboard.html">
+              Mulai gratis
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="#fitur">Pelajari fiturnya</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="index.html" aria-label="Lunaria, beranda">
+            <span class="brand__mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3.5a8.5 8.5 0 1 0 0 17 9.5 9.5 0 0 1 0-17z"/></svg>
+            </span>
+            Lunaria
+          </a>
+          <p>Pembukuan untuk orang yang lebih suka bekerja daripada mengurus pembukuan. Dibuat di Bandung, dipakai di seluruh Indonesia.</p>
+        </div>
+
+        <div class="footer__cols">
+          <div>
+            <h3>Produk</h3>
+            <ul>
+              <li><a href="#fitur">Fitur</a></li>
+              <li><a href="dashboard.html">Dasbor demo</a></li>
+              <li><a href="#harga">Harga</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Perusahaan</h3>
+            <ul>
+              <li><a href="#cerita">Cerita pengguna</a></li>
+              <li><a href="#harga">Kontak penjualan</a></li>
+              <li><a href="#faq">Pusat bantuan</a></li>
+              <li><a href="#faq">Status layanan</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#faq">Kebijakan privasi</a></li>
+              <li><a href="#faq">Ketentuan layanan</a></li>
+              <li><a href="#faq">Keamanan data</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 Lunaria Teknologi. Semua hak dilindungi.</p>
+        <ul>
+          <li><a href="#faq">Privasi</a></li>
+          <li><a href="#faq">Ketentuan</a></li>
+          <li><a href="dashboard.html">Dasbor</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="landing.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Dependensi & hasil build (proyek ini tidak butuh build)
+node_modules/
+.screenshots/
+.shots/
+*.log
+
+# Berkas attachment dari chat
+.attachments/

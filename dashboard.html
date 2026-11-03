@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dasbor demo — Lunaria</title>
+  <meta name="description" content="Dasbor demo Lunaria: ringkasan saldo, pemasukan, pengeluaran, grafik arus kas bulanan, dan pencatatan transaksi yang tersimpan di peramban Anda.">
+  <meta name="theme-color" content="#07080e">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="Dasbor demo — Lunaria">
+  <meta property="og:description" content="Coba dasbor Lunaria tanpa mendaftar: catat transaksi dan lihat arus kas bulanan Anda.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%238a7bff'/%3E%3Cpath d='M20.5 8.5a8 8 0 1 0 0 15 9 9 0 0 1 0-15z' fill='%230a0715'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Lewati ke konten utama</a>
+
+  <!-- ikon SVG dipakai ulang lewat <use> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></symbol>
+      <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7h16v12H4z"/><path d="M4 7V5.5A1.5 1.5 0 0 1 5.5 4H17"/><path d="M16 12.5h3"/></symbol>
+      <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></symbol>
+      <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4.5-3.4 7.4-8 8-4.6-.6-8-3.5-8-8V7z"/><path d="M9 12l2 2 4-4"/></symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v2.5M12 18.5V21M4.9 7.5l2.2 1.3M16.9 15.2l2.2 1.3M4.9 16.5l2.2-1.3M16.9 8.8l2.2-1.3"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+      <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.5 20a1.8 1.8 0 0 0 3 0"/></symbol>
+      <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 8h12v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M16 9h2a2 2 0 0 1 0 4h-2"/><path d="M4 21h13"/></symbol>
+      <symbol id="i-laptop" viewBox="0 0 24 24"><path d="M5 5h14v10H5z"/><path d="M3 19h18"/></symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 7h10v9H3z"/><path d="M13 11h4l3 3v2h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12z"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M16 5.5a3 3 0 0 1 0 5.6M18 20c0-2.3-.8-4-2-5"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v10M8 11l4 4 4-4"/><path d="M4 19h16"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="app">
+    <!-- ============ SIDEBAR (desktop) ============ -->
+    <aside class="sidebar" aria-label="Navigasi dasbor">
+      <div class="sidebar__brand">
+        <a class="brand" href="index.html" aria-label="Lunaria, kembali ke beranda">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3.5a8.5 8.5 0 1 0 0 17 9.5 9.5 0 0 1 0-17z"/></svg>
+          </span>
+          Lunaria
+        </a>
+      </div>
+
+      <nav aria-label="Menu utama dasbor">
+        <p class="sidebar__label">Ruang kerja</p>
+        <a class="side-link" href="dashboard.html" aria-current="page">
+          <svg aria-hidden="true"><use href="#i-grid"/></svg> Ringkasan
+        </a>
+        <a class="side-link" href="#transaksi">
+          <svg aria-hidden="true"><use href="#i-receipt"/></svg> Transaksi
+          <span class="side-link__count" id="sideTxCount">0</span>
+        </a>
+        <a class="side-link" href="#arus-kas">
+          <svg aria-hidden="true"><use href="#i-chart"/></svg> Arus kas
+        </a>
+        <a class="side-link" href="#kategori">
+          <svg aria-hidden="true"><use href="#i-wallet"/></svg> Kategori
+        </a>
+
+        <p class="sidebar__label">Usaha</p>
+        <a class="side-link" href="#transaksi" data-demo>
+          <svg aria-hidden="true"><use href="#i-folder"/></svg> Proyek
+          <span class="side-link__count">4</span>
+        </a>
+        <a class="side-link" href="#transaksi" data-demo>
+          <svg aria-hidden="true"><use href="#i-shield"/></svg> Pajak
+        </a>
+        <a class="side-link" href="#transaksi" data-demo>
+          <svg aria-hidden="true"><use href="#i-gear"/></svg> Pengaturan
+        </a>
+      </nav>
+
+      <div class="sidebar__foot">
+        <p>
+          <strong>Demo lokal</strong>
+          Data tersimpan di peramban ini saja, tidak dikirim ke mana pun.
+        </p>
+        <button class="btn btn--ghost btn--block" type="button" id="resetDemo">Reset data demo</button>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <div class="main">
+      <header class="topbar">
+        <button class="icon-btn topbar__menu" type="button" id="drawerOpen" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="drawer">
+          <svg aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+
+        <div class="topbar__title">
+          <h1>Ringkasan</h1>
+          <p id="todayLabel">Memuat tanggal…</p>
+        </div>
+
+        <div class="topbar__actions">
+          <button class="icon-btn" type="button" aria-label="Notifikasi" id="bellBtn">
+            <svg aria-hidden="true"><use href="#i-bell"/></svg>
+          </button>
+          <div class="avatar-chip">
+            <span class="avatar" aria-hidden="true">AR</span>
+            <span>Anindya R.</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="content" id="content" tabindex="-1">
+        <!-- ringkasan -->
+        <section class="summary" aria-label="Ringkasan keuangan bulan ini">
+          <article class="card" aria-labelledby="sumBalance">
+            <p class="card__label" id="sumBalance">
+              <svg aria-hidden="true"><use href="#i-wallet"/></svg> Saldo bersih
+            </p>
+            <p class="card__value" id="valBalance">
+              <span class="skeleton" style="display:inline-block;width:120px;height:26px"></span>
+            </p>
+            <p class="card__foot">
+              <span class="pill-delta" id="deltaBalance">
+                <svg aria-hidden="true"><use href="#i-arrow-up"/></svg> 0%
+              </span>
+              dibanding bulan lalu
+            </p>
+          </article>
+
+          <article class="card" aria-labelledby="sumIncome">
+            <p class="card__label" id="sumIncome">
+              <svg aria-hidden="true"><use href="#i-arrow-down"/></svg> Pemasukan bulan ini
+            </p>
+            <p class="card__value" id="valIncome">
+              <span class="skeleton" style="display:inline-block;width:110px;height:26px"></span>
+            </p>
+            <p class="card__foot" id="footIncome">Menunggu data transaksi…</p>
+          </article>
+
+          <article class="card" aria-labelledby="sumExpense">
+            <p class="card__label" id="sumExpense">
+              <svg aria-hidden="true"><use href="#i-arrow-up"/></svg> Pengeluaran bulan ini
+            </p>
+            <p class="card__value" id="valExpense">
+              <span class="skeleton" style="display:inline-block;width:100px;height:26px"></span>
+            </p>
+            <p class="card__foot" id="footExpense">Menunggu data transaksi…</p>
+          </article>
+
+          <article class="card" aria-labelledby="sumTax">
+            <p class="card__label" id="sumTax">
+              <svg aria-hidden="true"><use href="#i-shield"/></svg> Estimasi PPh final 0,5%
+            </p>
+            <p class="card__value" id="valTax">
+              <span class="skeleton" style="display:inline-block;width:90px;height:26px"></span>
+            </p>
+            <p class="card__foot">Dari omzet bruto bulan berjalan</p>
+          </article>
+        </section>
+
+        <!-- grafik + kategori -->
+        <div class="grid-2">
+          <section class="card panel" id="arus-kas" aria-labelledby="chartTitle">
+            <div class="panel__head">
+              <div>
+                <h2 id="chartTitle">Arus kas bulanan</h2>
+                <p>Pemasukan, pengeluaran, dan laba bersih</p>
+              </div>
+              <div class="segmented" role="group" aria-label="Rentang grafik">
+                <button type="button" data-range="6" aria-pressed="true">6 bulan</button>
+                <button type="button" data-range="12" aria-pressed="false">12 bulan</button>
+              </div>
+            </div>
+
+            <div class="chart">
+              <svg id="cashChart" role="img" aria-labelledby="chartDesc"></svg>
+              <p id="chartDesc" class="sr-only">Grafik batang pemasukan dan pengeluaran per bulan beserta garis laba bersih.</p>
+              <div class="chart__tip" id="chartTip" role="status" aria-live="polite"></div>
+            </div>
+
+            <div class="chart__legend">
+              <span><i class="swatch swatch--in"></i> Pemasukan</span>
+              <span><i class="swatch swatch--out"></i> Pengeluaran</span>
+              <span><i class="swatch swatch--net"></i> Laba bersih</span>
+            </div>
+          </section>
+
+          <section class="card panel" id="kategori" aria-labelledby="kategoriTitle">
+            <div class="panel__head">
+              <div>
+                <h2 id="kategoriTitle">Pengeluaran per kategori</h2>
+                <p id="kategoriSub">Bulan berjalan</p>
+              </div>
+            </div>
+            <div class="breakdown" id="breakdown"></div>
+          </section>
+        </div>
+
+        <!-- transaksi -->
+        <section class="card tx-panel" id="transaksi" aria-labelledby="txTitle">
+          <div class="tx-panel__head">
+            <div>
+              <h2 id="txTitle">Transaksi terbaru</h2>
+              <p id="txSub">0 transaksi</p>
+            </div>
+            <div class="tx-tools">
+              <div class="search">
+                <svg aria-hidden="true"><use href="#i-search"/></svg>
+                <label class="sr-only" for="txSearch">Cari transaksi</label>
+                <input id="txSearch" type="search" placeholder="Cari keterangan atau klien" autocomplete="off">
+              </div>
+              <button class="btn btn--ghost btn--sm" type="button" id="exportCsv">
+                <svg aria-hidden="true"><use href="#i-download"/></svg> Ekspor CSV
+              </button>
+              <button class="btn btn--primary btn--sm" type="button" id="addTxTop">
+                <svg aria-hidden="true"><use href="#i-plus"/></svg> Tambah transaksi
+              </button>
+            </div>
+          </div>
+
+          <div class="tx-scroll">
+            <table class="tx">
+              <caption>Daftar transaksi terbaru beserta status pembayarannya</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Keterangan</th>
+                  <th scope="col">Tanggal</th>
+                  <th scope="col">Kategori</th>
+                  <th scope="col">Status</th>
+                  <th scope="col" style="text-align:right">Nominal</th>
+                  <th scope="col"><span class="sr-only">Aksi</span></th>
+                </tr>
+              </thead>
+              <tbody id="txBody">
+                <!-- skeleton saat memuat -->
+                <tr class="sk-row"><td><div class="skeleton sk-line sk-line--md"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm" style="margin-left:auto"></div></td><td></td></tr>
+                <tr class="sk-row"><td><div class="skeleton sk-line sk-line--md"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm" style="margin-left:auto"></div></td><td></td></tr>
+                <tr class="sk-row"><td><div class="skeleton sk-line sk-line--md"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm" style="margin-left:auto"></div></td><td></td></tr>
+                <tr class="sk-row"><td><div class="skeleton sk-line sk-line--md"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm" style="margin-left:auto"></div></td><td></td></tr>
+                <tr class="sk-row"><td><div class="skeleton sk-line sk-line--md"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm"></div></td><td><div class="skeleton sk-line sk-line--sm" style="margin-left:auto"></div></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <p style="margin-top:18px;color:var(--muted);font-size:var(--fs-xs)">
+          Ini demo lokal. Semua angka dan transaksi disimpan di <code>localStorage</code> peramban Anda.
+          <a href="index.html" style="color:#c1b9ff;text-decoration:underline;text-underline-offset:3px">Kembali ke beranda</a>
+        </p>
+      </main>
+    </div>
+  </div>
+
+  <!-- tombol tambah (mobile) -->
+  <button class="fab" type="button" id="addTxFab">
+    <svg aria-hidden="true"><use href="#i-plus"/></svg> Tambah transaksi
+  </button>
+
+  <!-- drawer sidebar (mobile) -->
+  <div class="drawer" id="drawer" hidden>
+    <div class="drawer__backdrop" data-close-drawer></div>
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu navigasi dasbor">
+      <div class="sidebar__brand" style="display:flex;align-items:center;justify-content:space-between;padding:4px 6px 14px">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3.5a8.5 8.5 0 1 0 0 17 9.5 9.5 0 0 1 0-17z"/></svg>
+          </span>
+          Lunaria
+        </a>
+        <button class="icon-btn" type="button" data-close-drawer aria-label="Tutup menu">
+          <svg aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+      <a class="side-link" href="dashboard.html" aria-current="page"><svg aria-hidden="true"><use href="#i-grid"/></svg> Ringkasan</a>
+      <a class="side-link" href="#transaksi" data-close-drawer><svg aria-hidden="true"><use href="#i-receipt"/></svg> Transaksi</a>
+      <a class="side-link" href="#arus-kas" data-close-drawer><svg aria-hidden="true"><use href="#i-chart"/></svg> Arus kas</a>
+      <a class="side-link" href="#kategori" data-close-drawer><svg aria-hidden="true"><use href="#i-wallet"/></svg> Kategori</a>
+      <a class="side-link" href="#transaksi" data-close-drawer data-demo><svg aria-hidden="true"><use href="#i-folder"/></svg> Proyek</a>
+      <a class="side-link" href="#transaksi" data-close-drawer data-demo><svg aria-hidden="true"><use href="#i-shield"/></svg> Pajak</a>
+      <a class="side-link" href="#transaksi" data-close-drawer data-demo><svg aria-hidden="true"><use href="#i-gear"/></svg> Pengaturan</a>
+    </div>
+  </div>
+
+  <!-- modal tambah transaksi -->
+  <div class="modal" id="txModal" hidden>
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal__head">
+        <div>
+          <h2 id="modalTitle">Tambah transaksi</h2>
+          <p>Tersimpan otomatis di peramban ini</p>
+        </div>
+        <button class="icon-btn" type="button" data-close-modal aria-label="Tutup formulir">
+          <svg aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+
+      <form class="form" id="txForm" novalidate>
+        <fieldset style="border:0;padding:0;margin:0">
+          <legend class="field__hint" style="margin-bottom:6px">Jenis transaksi</legend>
+          <div class="type-toggle">
+            <label>
+              <input type="radio" name="type" value="income" checked>
+              <svg aria-hidden="true"><use href="#i-arrow-down"/></svg> Pemasukan
+            </label>
+            <label>
+              <input type="radio" name="type" value="expense">
+              <svg aria-hidden="true"><use href="#i-arrow-up"/></svg> Pengeluaran
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="txDesc">Keterangan</label>
+          <input id="txDesc" name="desc" type="text" maxlength="60" placeholder="Contoh: Invoice desain logo" required>
+          <p class="field__error" id="errDesc" hidden>Isi keterangan singkat, minimal 3 karakter.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="txAmount">Nominal (Rp)</label>
+            <input id="txAmount" name="amount" type="text" inputmode="numeric" placeholder="250000" required>
+            <p class="field__error" id="errAmount" hidden>Masukkan angka lebih dari 0.</p>
+          </div>
+          <div class="field">
+            <label for="txDate">Tanggal</label>
+            <input id="txDate" name="date" type="date" required>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="txCategory">Kategori</label>
+            <select id="txCategory" name="category">
+              <option>Penjualan</option>
+              <option>Jasa</option>
+              <option>Produk</option>
+              <option>Operasional</option>
+              <option>Peralatan</option>
+              <option>Pemasaran</option>
+              <option>Gaji</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="txStatus">Status</label>
+            <select id="txStatus" name="status">
+              <option value="paid">Lunas</option>
+              <option value="pending">Menunggu</option>
+              <option value="overdue">Jatuh tempo</option>
+              <option value="draft">Draf</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="txClient">Klien / proyek <span style="color:var(--muted);font-weight:400">(opsional)</span></label>
+          <input id="txClient" name="client" type="text" maxlength="40" placeholder="Contoh: Kirana Studio">
+        </div>
+
+        <div class="modal__actions">
+          <button class="btn btn--ghost" type="button" data-close-modal>Batal</button>
+          <button class="btn btn--primary" type="submit">Simpan transaksi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="dashboard.js" defer></script>
+</body>
+</html>
