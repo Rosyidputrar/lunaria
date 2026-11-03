@@ -849,10 +849,15 @@
      15. Reset demo & tombol lain
      ========================================================= */
 
-  document.getElementById("resetDemo").addEventListener("click", function () {
+  var resetDemo = function () {
     transactions = store.reset();
     renderAll();
     toast("Data demo dikembalikan ke kondisi awal");
+  };
+  document.getElementById("resetDemo").addEventListener("click", resetDemo);
+  document.getElementById("resetDemoMobile").addEventListener("click", function () {
+    resetDemo();
+    setDrawer(false);
   });
 
   document.getElementById("bellBtn").addEventListener("click", function () {
